@@ -1,0 +1,11 @@
+---
+import Base from '../layouts/Base.astro';import {getCollection} from 'astro:content';import {slugFor} from '../data/site';
+const posts=(await getCollection('blog',({data})=>!data.draft)).map(p=>({title:p.data.title,description:p.data.description,category:p.data.category,url:`/artigos/${p.id}/`,date:p.data.date.toISOString()}));
+---
+<Base title="Buscar matérias" description="Pesquise artigos, guias e conteúdos do Carro Serto"><section class="shell search-page"><span class="kicker">PESQUISE NO CARRO SERTO</span><h1>O que você quer saber?</h1><p>Encontre guias, dicas e análises publicadas no blog.</p><label for="q" class="sr-only">Buscar artigos</label><div class="search-box"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m16 16 5 5"/></svg><input id="q" type="search" placeholder="Ex.: carro elétrico, ficha técnica, SUV..." autocomplete="off" autofocus /></div><p class="result-count" id="result-count"></p><div id="results" class="search-results"></div></section><script id="post-data" type="application/json" set:html={JSON.stringify(posts).replace(/</g,'\\u003c')}/><script>
+const data = JSON.parse(document.getElementById('post-data')?.textContent || '[]');
+const input=document.getElementById('q');const results=document.getElementById('results');const count=document.getElementById('result-count');
+const clean=(v)=>v.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
+function show(){const q=clean(input.value.trim());const filtered=q?data.filter(p=>clean(p.title+' '+p.description+' '+p.category).includes(q)):data;count.textContent=`${filtered.length} ${filtered.length===1?'matéria encontrada':'matérias encontradas'}`;results.replaceChildren();filtered.forEach(p=>{const a=document.createElement('a');a.className='search-result';a.href=p.url;const cat=document.createElement('span');cat.className='eyebrow';cat.textContent=p.category;const title=document.createElement('strong');title.textContent=p.title;const desc=document.createElement('p');desc.textContent=p.description;a.append(cat,title,desc);results.append(a)});if(!filtered.length)results.textContent='Nenhuma matéria encontrada. Tente outras palavras.';}
+input.addEventListener('input',show);show();
+</script></Base>

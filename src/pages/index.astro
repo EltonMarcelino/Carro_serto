@@ -1,0 +1,16 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import PostCard from '../components/PostCard.astro';
+import { categories } from '../data/site';
+const posts = (await getCollection('blog', ({data})=>!data.draft)).sort((a,b)=>b.data.date.getTime()-a.data.date.getTime());
+const [lead, ...others] = posts;
+---
+<Base>
+  <section class="hero"><div class="shell hero-grid"><div class="hero-copy"><span class="section-chip"><span class="live-dot"></span> SEU PORTAL AUTOMOTIVO</span><h1>Tudo sobre carros.<br/><em>Sem enrolação.</em></h1><p>Lançamentos, fichas técnicas, análises e experiências de proprietários para você fazer a escolha certa.</p><div class="hero-actions"><a class="btn btn-orange" href="#ultimas">Explorar matérias <span>↗</span></a><a class="btn btn-outline" href="/sobre/">Conheça o Carro Serto</a></div><div class="hero-metrics"><div><b>01</b><span>Informação clara</span></div><div><b>02</b><span>Dados com fontes</span></div><div><b>03</b><span>Decisões melhores</span></div></div></div><div class="hero-art"><div class="art-grid"></div><div class="orbit orbit-one"></div><div class="orbit orbit-two"></div><img src="/imagens/carro-suv.svg" alt="Ilustração de SUV moderno" width="800" height="500" /><div class="art-tag"><span>✓</span> ESCOLHA COM CONFIANÇA</div></div></div></section>
+  <section class="quickbar"><div class="shell quickbar-inner"><span class="quick-title">ENCONTRE O QUE PRECISA</span>{categories.map((cat,i)=><a href={`/categoria/${cat.slug}/`}><span class="quick-emoji">{['⚡','📋','🔋','💬'][i]}</span>{cat.name}<span class="quick-arrow">↗</span></a>)}</div></section>
+  <section class="shell section" id="ultimas"><div class="section-heading"><div><span class="kicker">FIQUE POR DENTRO</span><h2>Últimas do <span>Carro Serto</span></h2><p>Informação para quem está pesquisando o próximo carro.</p></div><a href="/busca/" class="see-all">Ver todas as matérias ↗</a></div><div class="posts-grid">{posts.map((post,i)=><PostCard post={post} prominent={i===0} />)}</div></section>
+  <section class="shell highlight"><div><span class="kicker">NÓS AJUDAMOS VOCÊ A DECIDIR</span><h2>Mais informação.<br/><span>Menos arrependimento.</span></h2><p>Compare custos, confira especificações e aprenda a avaliar opiniões de quem já comprou antes de tomar uma decisão.</p><a class="btn btn-orange" href="/categoria/guias/">Ver nossos guias ↗</a></div><div class="highlight-symbol">CS<span>✓</span></div></section>
+  <section class="shell section category-section"><div class="section-heading"><div><span class="kicker">ESCOLHA SEU CAMINHO</span><h2>Explore por categoria</h2></div></div><div class="category-grid">{categories.map((c,i)=><a class="category-card" href={`/categoria/${c.slug}/`}><span class="cat-icon">{['🚘','📖','⚡','💭'][i]}</span><strong>{c.name}</strong><p>{c.description}</p><span class="cat-go">Explorar ↗</span></a>)}</div></section>
+  <section class="shell newsletter-note"><div><span class="kicker">ACOMPANHE AS NOVIDADES</span><h2>Uma nova perspectiva sobre o mundo automotivo.</h2><p>Salve o Carro Serto nos favoritos e volte para conferir os próximos artigos.</p></div><a class="btn btn-dark" href="/sobre/">Nossa missão ↗</a></section>
+</Base>

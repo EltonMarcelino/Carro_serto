@@ -1,0 +1,9 @@
+---
+import { slugFor } from '../data/site';
+const { post, prominent = false } = Astro.props;
+const d = post.data;
+---
+<article class:list={['post-card', {'prominent':prominent}]}>
+  <a href={`/artigos/${post.id}/`} class="post-img"><img src={d.image} alt={d.imageAlt} width="800" height="500" loading="lazy" /></a>
+  <div class="post-body"><a class="eyebrow" href={`/categoria/${slugFor(d.category)}/`}>{d.category}</a><h3><a href={`/artigos/${post.id}/`}>{d.title}</a></h3><p>{d.description}</p><div class="meta"><time datetime={d.date.toISOString()}>{d.date.toLocaleDateString('pt-BR',{day:'2-digit',month:'short',year:'numeric'})}</time><span>•</span><span>{d.readingTime} min de leitura</span></div></div>
+</article>

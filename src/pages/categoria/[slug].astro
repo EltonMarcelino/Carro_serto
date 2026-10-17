@@ -1,0 +1,6 @@
+---
+import Base from '../../layouts/Base.astro';import PostCard from '../../components/PostCard.astro';import {getCollection} from 'astro:content';import {categories} from '../../data/site';
+export function getStaticPaths(){return categories.map(category=>({params:{slug:category.slug},props:{category}}));}
+const {category}=Astro.props;const posts=(await getCollection('blog',({data})=>!data.draft&&data.category===category.name)).sort((a,b)=>b.data.date.getTime()-a.data.date.getTime());
+---
+<Base title={category.name} description={category.description}><div class="shell breadcrumb"><a href="/">Início</a><span>›</span><span>{category.name}</span></div><section class="shell category-hero"><span class="kicker">EDITORIA</span><h1>{category.name}</h1><p>{category.description}</p></section><section class="shell section"><div class="section-heading"><div><span class="kicker">ARTIGOS</span><h2>Explore as matérias</h2></div><span class="count-label">{posts.length} {posts.length===1?'artigo':'artigos'}</span></div>{posts.length>0?<div class="posts-grid">{posts.map(p=><PostCard post={p}/>)}</div>:<div class="empty">Novos conteúdos desta categoria serão publicados em breve.</div>}</section></Base>

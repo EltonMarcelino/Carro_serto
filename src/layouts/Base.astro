@@ -1,0 +1,51 @@
+---
+import '../styles/global.css';
+import { siteName, categories, tagline } from '../data/site';
+const { title = siteName, description = tagline, image = '/imagens/carro-suv.svg', type = 'website', published, updated } = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site).toString();
+const shareImage = new URL(image, Astro.site).toString();
+const schema = { '@context':'https://schema.org', '@type':'WebSite', name: siteName, url:new URL('/',Astro.site).toString(), inLanguage:'pt-BR', description:tagline, publisher:{'@type':'Organization', name:siteName} };
+---
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="theme-color" content="#0b1b30" />
+  <meta name="description" content={description} />
+  <link rel="canonical" href={canonical} />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="alternate" type="application/rss+xml" title="Carro Serto RSS" href="/rss.xml" />
+  <meta property="og:type" content={type} />
+  <meta property="og:site_name" content={siteName} />
+  <meta property="og:locale" content="pt_BR" />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:url" content={canonical} />
+  <meta property="og:image" content={shareImage} />
+  <meta name="twitter:card" content="summary_large_image" />
+  {published && <meta property="article:published_time" content={published} />}
+  {updated && <meta property="article:modified_time" content={updated} />}
+  <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+  <title>{title === siteName ? `${siteName} | ${tagline}` : `${title} | ${siteName}`}</title>
+</head>
+<body>
+  <a class="skip" href="#conteudo">Pular para o conteúdo</a>
+  <div class="topline"><div class="shell top-inner"><span>INFORMAÇÃO PARA QUEM AMA CARROS</span><span>Independente • Claro • Atual</span></div></div>
+  <header class="header">
+    <div class="shell header-inner">
+      <a class="brand" href="/" aria-label="Carro Serto - Início"><span class="brand-icon">C<span>S</span></span><span class="brand-name">CARRO <b>SERTO</b><small>O guia de quem dirige</small></span></a>
+      <nav class="desktop-nav" aria-label="Menu principal"><a href="/">Início</a>{categories.map(c=><a href={`/categoria/${c.slug}/`}>{c.name}</a>)}</nav>
+      <a class="header-action" href="/busca/" aria-label="Pesquisar artigos"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="7"/><path d="m16 16 5 5"/></svg><span>Buscar</span></a>
+      <button class="menu-toggle" aria-label="Abrir menu" aria-expanded="false">☰</button>
+    </div>
+    <nav class="mobile-nav" aria-label="Menu para celular" hidden><a href="/">Início</a>{categories.map(c=><a href={`/categoria/${c.slug}/`}>{c.name}</a>)}<a href="/busca/">Buscar</a></nav>
+  </header>
+  <main id="conteudo"><slot /></main>
+  <footer class="footer"><div class="shell footer-grid"><div><a class="footer-logo" href="/">CARRO <span>SERTO</span></a><p>Informação automotiva simples e útil, para você fazer boas escolhas sobre quatro rodas.</p></div><div><strong>Explore</strong><a href="/categoria/lancamentos/">Lançamentos</a><a href="/categoria/guias/">Guias de compra</a><a href="/categoria/eletricos/">Elétricos</a></div><div><strong>Institucional</strong><a href="/sobre/">Sobre o projeto</a><a href="/politica-de-privacidade/">Privacidade</a><a href="/termos/">Termos e transparência</a><a href="/contato/">Contato</a></div></div><div class="shell footer-bottom"><span>© {new Date().getFullYear()} Carro Serto. Todos os direitos reservados.</span><span>Conteúdo editorial independente.</span></div></footer>
+  <script>
+    const toggle = document.querySelector<HTMLButtonElement>('.menu-toggle');
+    const menu = document.querySelector<HTMLElement>('.mobile-nav');
+    toggle?.addEventListener('click', () => {const open = toggle.getAttribute('aria-expanded') === 'true'; toggle.setAttribute('aria-expanded', String(!open)); if(menu) menu.hidden = open; });
+  </script>
+</body></html>
