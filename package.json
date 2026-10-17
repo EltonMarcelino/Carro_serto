@@ -1,0 +1,8 @@
+{
+  "name": "carro-serto",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {"dev":"astro dev --host", "build":"astro build", "preview":"astro preview --host"},
+  "dependencies": {"astro":"^5.0.0", "@astrojs/sitemap":"^3.0.0"}
+}
