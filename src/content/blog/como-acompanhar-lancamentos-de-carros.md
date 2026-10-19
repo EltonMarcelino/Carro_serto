@@ -4,7 +4,7 @@ description: 'O que observar em um lançamento: versão, disponibilidade, preço
 category: 'Lançamentos'
 date: 2026-10-11
 readingTime: 4
-image: '/imagens/carro-suv.svg'
+image: '/imagens/onix-2020.svg'
 imageAlt: 'Ilustração de carro moderno relacionada a lançamentos automotivos'
 tags: ['lançamentos', 'novidades', 'mercado']
 ---
@@ -30,4 +30,4 @@ Compare motor, eficiência, plataforma, espaço interno, conectividade e pacote 
 
 Alguns detalhes só ficam claros após testes e uso prolongado. Você pode acompanhar novidades sem tomar uma decisão de compra antes de obter informações suficientes.
 
-No Carro Serto, a cobertura de lançamentos buscará responder quatro perguntas: **o que mudou, o que melhorou, o que merece atenção e para quem o carro faz sentido**.
+No Carro Certo, a cobertura de lançamentos buscará responder quatro perguntas: **o que mudou, o que melhorou, o que merece atenção e para quem o carro faz sentido**.

@@ -5,7 +5,7 @@ category: 'Guias'
 date: 2026-10-15
 readingTime: 6
 featured: true
-image: '/imagens/carro-suv.svg'
+image: '/imagens/onix-2020.svg'
 imageAlt: 'Ilustração de um carro utilitário moderno em fundo transparente'
 tags: ['compra', 'economia', 'segurança']
 ---

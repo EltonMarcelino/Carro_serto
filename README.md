@@ -1,4 +1,4 @@
-# CARRO SERTO — Blog automotivo
+# CARRO CERTO — Blog automotivo
 
 Blog em português feito com Astro, HTML semântico e CSS. Hospedagem estática gratuita possível em Cloudflare Pages.
 

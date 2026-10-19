@@ -4,7 +4,7 @@ description: 'Entenda autonomia, recarga, infraestrutura e custos de uso para sa
 category: 'Elétricos'
 date: 2026-10-14
 readingTime: 5
-image: '/imagens/carro-suv.svg'
+image: '/imagens/onix-2020.svg'
 imageAlt: 'Ilustração de veículo moderno representando mobilidade elétrica'
 tags: ['elétricos', 'recarga', 'autonomia']
 ---

@@ -1,0 +1,16 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import PostCard from '../components/PostCard.astro';
+const posts = (await getCollection('blog', ({data})=>!data.draft)).sort((a,b)=>b.data.date.getTime()-a.data.date.getTime());
+---
+<Base title="Carros" description="Veja todos os artigos do Carro Certo sobre carros, comparativos e conteúdos úteis.">
+  <section class="shell category-hero">
+    <div class="breadcrumb"><a href="/">Início</a><span>›</span><span>Carros</span></div>
+    <span class="kicker">TUDO EM UM SÓ LUGAR</span>
+    <h1>Carros</h1>
+    <p>Uma seleção com todos os conteúdos do Carro Certo, incluindo lançamentos, guias, elétricos e opinião dos donos.</p>
+    <span class="count-label">{posts.length} matérias publicadas</span>
+  </section>
+  <section class="shell section"><div class="posts-grid">{posts.map((post,i)=><PostCard post={post} prominent={i===0} />)}</div></section>
+</Base>

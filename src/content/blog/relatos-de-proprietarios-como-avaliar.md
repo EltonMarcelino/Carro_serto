@@ -4,7 +4,7 @@ description: 'Saiba pesquisar opiniões em redes sociais, identificar padrões e
 category: 'Opinião dos donos'
 date: 2026-10-12
 readingTime: 4
-image: '/imagens/carro-suv.svg'
+image: '/imagens/onix-2020.svg'
 imageAlt: 'Ilustração de um automóvel em artigo sobre experiências de proprietários'
 tags: ['proprietários', 'avaliações', 'redes-sociais']
 ---
@@ -26,7 +26,7 @@ Várias publicações falando do mesmo sintoma merecem atenção, mas conteúdos
 
 Para assuntos de segurança, consulte campanhas de recall e comunicados oficiais do fabricante ou do órgão responsável. Para consumo e especificações, compare os relatos com critérios de medição reconhecidos.
 
-## Como o Carro Serto tratará opiniões
+## Como o Carro Certo tratará opiniões
 
 Quando publicarmos relatos reais sobre modelos específicos, vamos buscar indicar onde e quando foram publicados, separar comentários de dados confirmados e respeitar privacidade e direitos dos autores. **Não apresentaremos depoimentos fictícios como reais.**
 
