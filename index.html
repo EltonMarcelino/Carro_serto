@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Carro Serto: lançamentos, fichas técnicas, comparativos e experiências de proprietários para ajudar você a escolher melhor seu próximo carro.">
+  <meta name="theme-color" content="#10151d">
+  <title>Carro Serto — Informação para escolher melhor</title>
+  <link rel="preconnect" href="https://images.unsplash.com">
+  <link rel="stylesheet" href="styles.css">
+  <script type="module" src="/src/main.ts"></script>
+</head>
+<body>
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+  <header class="site-header">
+    <div class="header-inner wrap">
+      <a class="brand" href="#inicio" aria-label="Carro Serto, página inicial">
+        <span class="brand-car" aria-hidden="true">⌁</span>
+        <span class="brand-name">CARRO <b>SERTO</b><small>INFORMAÇÃO PARA ESCOLHER MELHOR</small></span>
+      </a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu" aria-expanded="false">☰</button>
+      <nav class="main-nav" id="mainNav" aria-label="Navegação principal">
+        <a class="active" href="#inicio">Início</a>
+        <a href="#artigos" data-category-link="Lançamentos">Lançamentos</a>
+        <a href="#artigos" data-category-link="Fichas técnicas">Fichas técnicas</a>
+        <a href="#artigos" data-category-link="Comparativos">Comparativos</a>
+        <a href="#artigos" data-category-link="Opiniões de proprietários">Opiniões</a>
+        <a href="#sobre">Sobre</a>
+      </nav>
+      <button class="header-search" id="focusSearch" aria-label="Ir para pesquisa">⌕</button>
+    </div>
+  </header>
+
+  <main id="conteudo">
+    <section class="hero" id="inicio" aria-label="Artigo em destaque">
+      <div class="hero-shade"></div>
+      <div class="wrap hero-content">
+        <span class="eyebrow">GUIA DO MOTORISTA</span>
+        <h1>Seu próximo carro começa com uma boa escolha.</h1>
+        <p>Novidades, fichas técnicas e experiências reais para você comparar opções e comprar com mais confiança.</p>
+        <a class="button button-yellow" href="#artigos">Explore os artigos <span aria-hidden="true">→</span></a>
+      </div>
+      <div class="hero-note">INFORMAÇÃO • COMPARAÇÃO • ESCOLHA</div>
+    </section>
+
+    <section class="wrap content-layout" id="artigos">
+      <div class="article-column">
+        <div class="section-heading">
+          <div><span class="section-kicker">DO BLOG PARA VOCÊ</span><h2 id="articleHeading">Últimos artigos</h2></div>
+          <button class="text-button" id="clearFilters">Ver todos <span aria-hidden="true">→</span></button>
+        </div>
+        <div class="filter-row" aria-label="Filtrar artigos por categoria">
+          <button class="filter-chip selected" data-filter="Todos">Todos</button>
+          <button class="filter-chip" data-filter="Lançamentos">Lançamentos</button>
+          <button class="filter-chip" data-filter="Fichas técnicas">Fichas técnicas</button>
+          <button class="filter-chip" data-filter="Comparativos">Comparativos</button>
+          <button class="filter-chip" data-filter="Opiniões de proprietários">Opiniões</button>
+        </div>
+        <div class="article-grid" id="articleGrid" aria-live="polite"></div>
+        <p class="empty-state" id="emptyState" hidden>Nenhum artigo encontrado. Tente outra palavra ou categoria.</p>
+        <div class="load-more-wrap"><button class="button button-outline" id="loadMore">Carregar mais artigos</button></div>
+      </div>
+
+      <aside class="sidebar">
+        <form class="search-box" id="searchForm" role="search">
+          <label class="sr-only" for="searchInput">Pesquisar no blog</label>
+          <input id="searchInput" type="search" placeholder="Pesquisar no blog...">
+          <button aria-label="Pesquisar" type="submit">⌕</button>
+        </form>
+        <section class="side-panel">
+          <h2>Categorias</h2>
+          <div class="category-list">
+            <button data-filter="Lançamentos"><span class="category-icon">↗</span><span>Lançamentos</span><b>01</b></button>
+            <button data-filter="Fichas técnicas"><span class="category-icon">▤</span><span>Fichas técnicas</span><b>02</b></button>
+            <button data-filter="Comparativos"><span class="category-icon">⇄</span><span>Comparativos</span><b>03</b></button>
+            <button data-filter="Opiniões de proprietários"><span class="category-icon">◎</span><span>Opiniões de proprietários</span><b>04</b></button>
+            <button data-filter="Guias de compra"><span class="category-icon">✓</span><span>Guias de compra</span><b>05</b></button>
+          </div>
+        </section>
+        <section class="newsletter side-panel">
+          <div class="newsletter-icon">✉</div>
+          <h2>Novidades no seu ritmo</h2>
+          <p>Receba novos guias e artigos automotivos por e-mail.</p>
+          <form id="newsletterForm">
+            <label class="sr-only" for="emailInput">Seu e-mail</label>
+            <input id="emailInput" type="email" placeholder="Seu melhor e-mail" required>
+            <button class="button button-yellow" type="submit">Quero receber</button>
+          </form>
+          <small id="newsletterMessage">Formulário demonstrativo: precisa de um serviço de e-mail para receber inscrições.</small>
+        </section>
+        <section class="side-panel about-mini">
+          <span class="section-kicker">NOSSO COMPROMISSO</span>
+          <h2>Informação clara. Escolhas melhores.</h2>
+          <p>Nosso objetivo é explicar o universo automotivo sem complicação, destacando vantagens, limitações e pontos que merecem atenção.</p>
+          <a href="#sobre" class="inline-link">Conheça o Carro Serto →</a>
+        </section>
+      </aside>
+    </section>
+
+    <section class="wrap value-strip" aria-label="O que você encontra no Carro Serto">
+      <div><span class="value-icon">✦</span><div><h3>Lançamentos</h3><p>Novidades e mudanças do mercado.</p></div></div>
+      <div><span class="value-icon">▤</span><div><h3>Fichas técnicas</h3><p>Dados explicados de forma simples.</p></div></div>
+      <div><span class="value-icon">⇄</span><div><h3>Comparativos</h3><p>Veja qual opção combina com você.</p></div></div>
+      <div><span class="value-icon">◎</span><div><h3>Opiniões reais</h3><p>Experiências identificadas e contextualizadas.</p></div></div>
+    </section>
+
+    <section class="about-section" id="sobre">
+      <div class="wrap about-content">
+        <span class="section-kicker">PRAZER, SOMOS O CARRO SERTO</span>
+        <h2>Escolher um carro fica mais fácil quando você sabe o que observar.</h2>
+        <p>O Carro Serto é um projeto editorial independente sobre carros, com guias de compra, novidades, comparações e relatos de proprietários. Nosso compromisso é separar dados confirmados, estimativas e opiniões para ajudar você a pesquisar melhor.</p>
+        <a class="button button-yellow" href="#artigos">Comece a explorar <span aria-hidden="true">→</span></a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" id="contato">
+    <div class="wrap footer-grid">
+      <div class="footer-brand"><a class="brand" href="#inicio"><span class="brand-car" aria-hidden="true">⌁</span><span class="brand-name">CARRO <b>SERTO</b><small>INFORMAÇÃO PARA ESCOLHER MELHOR</small></span></a><p>Conteúdo automotivo para você pesquisar, comparar e escolher com mais confiança.</p></div>
+      <div><h2>Explore</h2><a href="#artigos">Todos os artigos</a><a href="#artigos" data-category-link="Lançamentos">Lançamentos</a><a href="#artigos" data-category-link="Comparativos">Comparativos</a></div>
+      <div><h2>Informações</h2><a href="#sobre">Sobre o projeto</a><a href="politica-de-privacidade.html">Política de privacidade</a><a href="mailto:contato@carroserto.com.br">Contato</a></div>
+    </div>
+    <div class="wrap footer-bottom"><span>© <span id="year"></span> Carro Serto. Todos os direitos reservados.</span><span>Conteúdo informativo. Confirme dados e preços com fontes oficiais.</span></div>
+  </footer>
+
+  <dialog class="article-dialog" id="articleDialog" aria-labelledby="dialogTitle">
+    <button class="dialog-close" id="closeDialog" aria-label="Fechar artigo">×</button>
+    <div id="dialogContent"></div>
+  </dialog>
+</body>
+</html>
